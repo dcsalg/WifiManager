@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Wifi setup</title>
+    <style>
+
+        body {
+            background-color: #dadada;
+            font-family: Verdana, sans-serif;
+        }
+
+        .cabecera {
+            padding: 5px 0px;
+            border-radius: 5px;
+            background-color: rgb(23, 33, 119);
+            text-align: center;
+            color: #fff;
+            margin: 5px auto; /* Centra horizontalmente en la página */
+        }
+
+        .cabecera h1 {
+            font-size: 20px;
+            margin: 0px;
+        }
+        .cabecera h2 {
+            font-size: 16px;
+            margin: 0px;
+        }
+
+        .contenedor {
+                display: flex;
+                flex-direction: column;
+                align-items: center; /* Centra horizontalmente */
+                max-width: 600px; /* Ancho máximo del contenedor */
+                background-color: #fff;
+                padding: 20px 5px;
+                border-radius: 10px;
+                margin: 0 auto; /* Centra horizontalmente en la página */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+        }
+
+        /* Estilos generales */
+        .formulario {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .entrada {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .entrada label {
+            margin-bottom: 5px; /* Añade un espacio entre el label y el input */
+            text-align: center; /* Centra el texto del label */
+        }
+
+        .entrada input[type="text"],
+        .entrada input[type="password"] {
+            height: 20px;
+            flex: 2;
+            padding: 5px;
+            border: 1px solid #c7c7c7;
+            border-radius: 5px;
+        }
+        
+       .redes-wifi {
+            margin-bottom: 23px;
+        }
+        
+        .redes-wifi ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 15px; /* Añade un margen superior de 15px */
+            display: grid; /* Se mantiene como grid */
+            grid-template-columns: 1fr; /* Cambiado a una sola columna */
+            gap: 10px; /* Espaciado entre filas */
+        }
+
+        .redes-wifi li {
+            cursor: pointer;
+            padding: 5px;
+            background: #f1f1f1;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        #toggle-password{
+            width: 20px;
+            padding: 0px;
+        }
+
+        .contenedor-footer {
+            padding: 5px 0px;
+            border-radius: 5px;
+            background-color: rgb(23, 33, 119);
+            text-align: center;
+            color: #fff;
+            margin: 5px auto; /* Centra horizontalmente en la página */
+        }
+        
+        .footer {
+            text-align: center;
+            font-size: 12px;
+        }
+
+        /* Estilo del botón "Guardar" */
+        #guardar-button {
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 20px; /* Añadir margen superior */
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #guardar-button:hover {
+            background-color: rgb(116, 188, 212);
+            color: black;
+        }
+        
+        .volver-button {
+            background-color: #555;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 20px;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .volver-button:hover {
+            background-color: #777;
+        }
+        
+        .derechos {
+            font-size: 9px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="contenedor-cabecera">
+        <header class="cabecera">
+            <h1>WiFi Manager</h1>
+            <h2>Ayresnet</h2>
+        </header>
+    </div>
+    <div class="contenedor">
+    <form method="POST" action="/save">
+        <div class="formulario">
+            <div class="redes-wifi">
+                <label for="wifi-list">Redes WiFi Disponibles:</label>
+                <ul id="wifi-list">
+                    <!-- Aquí se agregarán las opciones de las redes WiFi -->
+                </ul>
+            </div>
+            <div class="entrada">
+                <label for="wifi-ssif">SSID:</label>
+                <input type="text" name="ssid" id="wifi-ssif">
+            </div>
+            <div class="entrada">
+                <label for="wifi-password">PASSWORD:</label>
+                <input type="password" name="password" id="wifi-password">
+            </div>
+            <div class="entrada">
+                <input type="checkbox" id="show-password">
+                <label for="show-password">Mostrar contraseña</label>
+            </div>
+            <input type="submit" value="Guardar" id="guardar-button">
+        </div>
+    </form>
+    </div>
+    
+    <div class="contenedor-footer">
+        <footer class="footer">
+            <p>(c) 2024 - Daniel Salgado - v1.1.0</p>
+        </footer>
+    </div>
+    <p class="derechos">
+        El contenido de esta página web, incluyendo pero no limitado a texto, gráficos, logotipos, iconos, imágenes, clips de audio y video, así como el diseño y la disposición de los elementos en la página, están protegidos por las leyes de derechos de autor y otras leyes aplicables. Queda estrictamente prohibida cualquier reproducción, distribución, modificación o uso no autorizado de cualquier parte del contenido de este sitio web sin el previo consentimiento por escrito de Daniel Salgado y Ayresnet.
+        Se otorga permiso para copiar y usar fragmentos de código fuente y ejemplos proporcionados en esta página web únicamente con el propósito de configurar y utilizar el software de gestión de Wi-Fi desarrollado por Daniel Salgado y Ayresnet. Sin embargo, cualquier redistribución o reproducción completa o parcial del código fuente de este software está sujeta a los términos y condiciones establecidos en la licencia de código abierto adjunta.
+        El uso de marcas comerciales, nombres comerciales, marcas de servicio y logotipos que aparecen en este sitio web están sujetos a las leyes de propiedad intelectual y no pueden ser utilizados sin el previo consentimiento por escrito de sus propietarios respectivos.
+        Descargo de responsabilidad: Aunque nos esforzamos por proporcionar información precisa y actualizada, no ofrecemos garantías de ningún tipo, expresas o implícitas, sobre la integridad, precisión, confiabilidad, idoneidad o disponibilidad respecto al sitio web o la información, productos, servicios o gráficos relacionados contenidos en el sitio web para cualquier propósito. Cualquier confianza que usted deposite en dicha información es, por lo tanto, estrictamente bajo su propio riesgo.
+        Cualquier pregunta relacionada con los derechos de autor de este sitio web puede dirigirse via email.
+    </p>
+    
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var redesWifi = document.getElementById('wifi-list');
+        redesWifi.addEventListener('click', function(event) {
+            if (event.target.tagName === 'LI') {
+                document.getElementById('wifi-ssif').value = event.target.textContent.split(' - ')[0]; // Extrae solo el SSID
+            }
+        });
+
+        var showPasswordCheckbox = document.getElementById('show-password');
+        var passwordInput = document.getElementById('wifi-password');
+        
+        showPasswordCheckbox.addEventListener('change', function() {
+            if (showPasswordCheckbox.checked) {
+                passwordInput.type = 'text';
+            } else {
+                passwordInput.type = 'password';
+            }
+        });
+    });
+
+    </script>
+</body>
+</html>
+
+
